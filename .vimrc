@@ -9,9 +9,11 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+" Plugin 'christoomey/vim-tmux-navigator'
 
 " airline I think
 "Plugin 'vim-airline/vim-airline'
+"
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
 
 
@@ -52,9 +54,11 @@ syntax on
 
 set wildmenu
 set nu
+"set colorcolumn=81
 
 "let g:airline_powerline_fonts = 1
-"set laststatus=2
+set laststatus=2
+set statusline+=%F
 "
 set t_Co=256
 
@@ -64,7 +68,7 @@ if has('autocmd')
     autocmd GUIEnter * set visualbell t_vb=
 endif
 
-color delek
+color evening
 
 set tabstop=4
 set expandtab
@@ -72,17 +76,50 @@ set softtabstop=4
 set shiftwidth=4
 filetype indent on
 
+set relativenumber
+
 "make split navigation better (I think)
 
 "this might be good idk
 set so=2
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
+
+nnoremap <c-j> <c-w>j 
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+nnoremap <c-n> :bn<cr>
+nnoremap <c-p> :bp<cr>
+
+"let g:tmux_navigator_no_mappings = 1
+
+"nmap <silent> <c-h> :TmuxNavigateLeft<cr><esc>
+"nmap <silent> <c-j> :TmuxNavigateDown<cr><esc>
+"nmap <silent> <c-k> :TmuxNavigateUp<cr><esc>
+"nmap <silent> <c-l> :TmuxNavigateRight<cr><esc>
+"nmap <silent> <c-/> :TmuxNavigatePrevious<cr><esc>
+
+
+
+
+
+
+"nnoremap <C-k> <C-w><C-k>
+"nnoremap <C-l> <C-w><C-l>
+"nnoremap <C-h> <C-w><C-h>
+
+"nnoremap <silent> <C-j> :TmuxNavigateLeft<cr>
+"nnoremap <silent> <C-J> :PluginInstall<cr>
+"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+
+
 
 
 "make vim go to the last edited location in a file (maybe good??)

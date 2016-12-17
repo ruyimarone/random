@@ -53,22 +53,39 @@ filetype plugin indent on    " required
 syntax on
 
 set wildmenu
-set nu
-"set colorcolumn=81
+set title
+set ruler
+set wrap
+set guioptions=T
 
-"let g:airline_powerline_fonts = 1
-set laststatus=2
-set statusline+=%F
+"lines
+set nu
+set relativenumber
+set so=2
+
+"Search
+set ignorecase
+set smartcase
+set incsearch
+"set hlsearch
+
+
+"#set laststatus=2
+"set statusline+=%F
 "
 set t_Co=256
-
+set laststatus=2
 
 set noerrorbells visualbell t_vb=
 if has('autocmd')
     autocmd GUIEnter * set visualbell t_vb=
 endif
 
-color evening
+"color schemes
+set background=dark
+colorscheme blue
+"colorscheme solarized
+
 
 set tabstop=4
 set expandtab
@@ -76,13 +93,7 @@ set softtabstop=4
 set shiftwidth=4
 filetype indent on
 
-set relativenumber
-
 "make split navigation better (I think)
-
-"this might be good idk
-set so=2
-
 set splitbelow
 set splitright
 
@@ -102,11 +113,6 @@ nnoremap <c-p> :bp<cr>
 "nmap <silent> <c-l> :TmuxNavigateRight<cr><esc>
 "nmap <silent> <c-/> :TmuxNavigatePrevious<cr><esc>
 
-
-
-
-
-
 "nnoremap <C-k> <C-w><C-k>
 "nnoremap <C-l> <C-w><C-l>
 "nnoremap <C-h> <C-w><C-h>
@@ -117,8 +123,6 @@ nnoremap <c-p> :bp<cr>
 "nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
 "nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
 "nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
-
-
 
 
 

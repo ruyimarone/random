@@ -9,6 +9,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'dracula/vim'
+Plugin 'scrooloose/nerdcommenter'
+
 " Plugin 'christoomey/vim-tmux-navigator'
 
 " airline I think
@@ -50,6 +53,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
+let mapleader=" "
+
 syntax on
 
 set wildmenu
@@ -69,10 +74,9 @@ set smartcase
 set incsearch
 "set hlsearch
 
-
 "#set laststatus=2
 "set statusline+=%F
-"
+
 set t_Co=256
 set laststatus=2
 
@@ -82,9 +86,16 @@ if has('autocmd')
 endif
 
 "color schemes
-set background=dark
-colorscheme blue
+"set background=dark
+"colorscheme blue
 "colorscheme solarized
+colorscheme darcula
+
+"highlight current line
+set cursorline
+
+"show current command
+set showcmd
 
 
 set tabstop=4
@@ -93,14 +104,18 @@ set softtabstop=4
 set shiftwidth=4
 filetype indent on
 
+"keybinds
+"make <Space> * 2 jump backwards
+nnoremap <Leader><Space> `.
+
 "make split navigation better (I think)
 set splitbelow
 set splitright
 
-nnoremap <c-j> <c-w>j 
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+nnoremap <Leader>j <c-w>j 
+nnoremap <Leader>k <c-w>k
+nnoremap <Leader>h <c-w>h
+nnoremap <Leader>l <c-w>l
 
 nnoremap <c-n> :bn<cr>
 nnoremap <c-p> :bp<cr>
@@ -128,5 +143,5 @@ nnoremap <c-p> :bp<cr>
 
 "make vim go to the last edited location in a file (maybe good??)
 if has("autocmd")
-      au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+      au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif

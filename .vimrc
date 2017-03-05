@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" ===============PLUGINS===================
+
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,16 +12,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdcommenter'
+" auto complete
+Plugin 'ervandew/supertab'
 
-" Plugin 'christoomey/vim-tmux-navigator'
-
-" airline I think
 "Plugin 'vim-airline/vim-airline'
 "
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
-
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -53,95 +53,114 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-let mapleader=" "
+"supertab config
+let g:SuperTabCrMapping=1
 
+
+" ===============END PLUGINS================
+
+
+
+
+" ===============GENERAL OPTIONS============
 syntax on
-
 set wildmenu
 set title
 set ruler
 set wrap
 set guioptions=T
+set t_Co=256
+set laststatus=2
 
-"lines
+"line numbers, relative numbers, and a scroll off
 set nu
 set relativenumber
 set so=2
 
-"Search
+"smart case sensitivty in searching, show results
+"check keybind section for highlight toggle
 set ignorecase
 set smartcase
 set incsearch
-"set hlsearch
-
+set hlsearch
 "#set laststatus=2
 "set statusline+=%F
 
-set t_Co=256
-set laststatus=2
-
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-    autocmd GUIEnter * set visualbell t_vb=
-endif
-
-"color schemes
-"set background=dark
-"colorscheme blue
-"colorscheme solarized
-colorscheme darcula
-
-"highlight current line
-set cursorline
-
-"show current command
-set showcmd
-
-
+"4 spaces, expand tabs, etc
 set tabstop=4
 set expandtab
 set softtabstop=4
 set shiftwidth=4
 filetype indent on
 
-"keybinds
-"make <Space> * 2 jump backwards
-nnoremap <Leader><Space> `.
+"mute the error bell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+    autocmd GUIEnter * set visualbell t_vb=
+endif
 
-"make split navigation better (I think)
+
+"highlight current line
+set cursorline
+
+"show current command in status bar
+set showcmd
+
+
+" ===============KEYBINDS===================
+
+"set leader to space
+let mapleader=" "
+
+"double tap space to move back in the edit buffer
+"f to move forward
+nnoremap <Leader><Space> g;
+nnoremap <Leader>f g,
+
+"yank to system clipboard
+"nnoremap <Leader>y "+y
+"nnoremap <Leader>p "*y
+
+
+"make splits open in the expected way
 set splitbelow
 set splitright
 
-nnoremap <Leader>j <c-w>j 
+"use vim binds to move between panes
+nnoremap <Leader>j <c-w>j
 nnoremap <Leader>k <c-w>k
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>l <c-w>l
 
-nnoremap <c-n> :bn<cr>
-nnoremap <c-p> :bp<cr>
+"move between buffers
+"nnoremap <c-n> :bn<cr>
+"nnoremap <c-p> :bp<cr>
 
-"let g:tmux_navigator_no_mappings = 1
+"toggle search highlighting
+nnoremap <silent> <Leader>/ :set hls!<cr>
 
-"nmap <silent> <c-h> :TmuxNavigateLeft<cr><esc>
-"nmap <silent> <c-j> :TmuxNavigateDown<cr><esc>
-"nmap <silent> <c-k> :TmuxNavigateUp<cr><esc>
-"nmap <silent> <c-l> :TmuxNavigateRight<cr><esc>
-"nmap <silent> <c-/> :TmuxNavigatePrevious<cr><esc>
 
-"nnoremap <C-k> <C-w><C-k>
-"nnoremap <C-l> <C-w><C-l>
-"nnoremap <C-h> <C-w><C-h>
+" ===============COLORS===================
 
-"nnoremap <silent> <C-j> :TmuxNavigateLeft<cr>
-"nnoremap <silent> <C-J> :PluginInstall<cr>
-"nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
-"nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
-"nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
-"nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+"colorscheme
+colorscheme darcula
 
 
 
-"make vim go to the last edited location in a file (maybe good??)
+" ============FUNCTIONS, SCRIPTS==========
+
+"trim trailing white space
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+command! TrimWhitespace call TrimWhitespace()
+
+nnoremap <silent> <Leader>t :TrimWhitespace<cr>
+
+"Vim opens to the last edited position in a file
 if has("autocmd")
       au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif

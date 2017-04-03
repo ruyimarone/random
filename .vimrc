@@ -15,8 +15,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 " auto complete
 Plugin 'ervandew/supertab'
-
-"Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 "
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
 
@@ -56,6 +56,34 @@ filetype plugin indent on    " required
 "supertab config
 let g:SuperTabCrMapping=1
 
+"airline config
+
+let g:airline#extensions#tabline#enabled = 1
+"Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+"
+"
+"let g:airline_powerline_fonts = 1
+
+let g:airline_theme='jellybeans'
+"let g:airline_theme='bubblegum'
+"let g:airline_mode_map = {
+  "\ '__' : '-',
+  "\ 'n'  : 'N',
+  "\ 'i'  : 'I',
+  "\ 'R'  : 'R',
+  "\ 'c'  : 'C',
+  "\ 'v'  : 'V',
+  "\ 'V'  : 'V',
+  "\ '' : 'V',
+  "\ 's'  : 'S',
+  "\ 'S'  : 'S',
+  "\ '' : 'S',
+  "\ }
+
+
+let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%#__restore__# :%3v'
 
 " ===============END PLUGINS================
 
@@ -71,6 +99,7 @@ set wrap
 set guioptions=T
 set t_Co=256
 set laststatus=2
+set hidden
 
 "line numbers, relative numbers, and a scroll off
 set nu
@@ -82,7 +111,7 @@ set so=2
 set ignorecase
 set smartcase
 set incsearch
-set hlsearch
+"set hlsearch
 "#set laststatus=2
 "set statusline+=%F
 
@@ -133,8 +162,8 @@ nnoremap <Leader>h <c-w>h
 nnoremap <Leader>l <c-w>l
 
 "move between buffers
-"nnoremap <c-n> :bn<cr>
-"nnoremap <c-p> :bp<cr>
+nnoremap <Leader>n :bn<cr>
+nnoremap <Leader>p :bp<cr>
 
 "toggle search highlighting
 nnoremap <silent> <Leader>/ :set hls!<cr>

@@ -62,8 +62,6 @@ let g:airline#extensions#tabline#enabled = 1
 "Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-"
-"
 "let g:airline_powerline_fonts = 1
 
 let g:airline_theme='jellybeans'
@@ -111,7 +109,7 @@ set so=2
 set ignorecase
 set smartcase
 set incsearch
-"set hlsearch
+set hlsearch!
 "#set laststatus=2
 "set statusline+=%F
 
@@ -135,6 +133,12 @@ set cursorline
 "show current command in status bar
 set showcmd
 
+"turn off wraping by default
+set nowrap
+
+"
+set display+=lastline
+
 
 " ===============KEYBINDS===================
 
@@ -143,8 +147,13 @@ let mapleader=" "
 
 "double tap space to move back in the edit buffer
 "f to move forward
-nnoremap <Leader><Space> g;
-nnoremap <Leader>f g,
+"nnoremap <Leader><Space> g;
+"nnoremap <Leader>f g,
+
+
+nnoremap <Leader><Space> <c-o>
+nnoremap <Leader>f <c-i>
+
 
 "yank to system clipboard
 "nnoremap <Leader>y "+y
@@ -164,6 +173,10 @@ nnoremap <Leader>l <c-w>l
 "move between buffers
 nnoremap <Leader>n :bn<cr>
 nnoremap <Leader>p :bp<cr>
+
+"swap between buffers with space tab
+nnoremap <Leader><Tab> :b#<cr>
+
 
 "toggle search highlighting
 nnoremap <silent> <Leader>/ :set hls!<cr>

@@ -1,8 +1,9 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" ===============PLUGINS===================
-
+"============================
+"=        Plugins           =
+"============================
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -17,7 +18,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'ervandew/supertab'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-"
+Plugin 'nanotech/jellybeans.vim'
+"Plugin 'scrooloose/nerdtree'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'christoomey/vim-tmux-navigator'
+
+
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
 
 " The following are examples of different formats supported.
@@ -42,7 +48,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -53,11 +59,14 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
+"============================
+"=     Plugins Config       =
+"============================
+
 "supertab config
 let g:SuperTabCrMapping=1
 
 "airline config
-
 let g:airline#extensions#tabline#enabled = 1
 "Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
 let g:airline#extensions#tabline#left_sep = ' '
@@ -79,16 +88,18 @@ let g:airline_theme='jellybeans'
   "\ 'S'  : 'S',
   "\ '' : 'S',
   "\ }
-
-
 let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%#__restore__# :%3v'
 
-" ===============END PLUGINS================
+"nerdtree config
+map <C-n> :NERDTreeToggle<CR>
+"close if the only buffer is the file
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
+"============================
+"=     General Config       =
+"============================
 
-
-" ===============GENERAL OPTIONS============
 syntax on
 set wildmenu
 set title
@@ -98,69 +109,52 @@ set guioptions=T
 set t_Co=256
 set laststatus=2
 set hidden
-
-"line numbers, relative numbers, and a scroll off
-set nu
-set relativenumber
 set so=2
+set cursorline
+set showcmd
+set nowrap
 
-"smart case sensitivty in searching, show results
-"check keybind section for highlight toggle
+"Searching
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch!
-"#set laststatus=2
-"set statusline+=%F
 
-"4 spaces, expand tabs, etc
+"Indentation settings
 set tabstop=4
 set expandtab
 set softtabstop=4
 set shiftwidth=4
 filetype indent on
 
-"mute the error bell
+"mute error bell
 set noerrorbells visualbell t_vb=
 if has('autocmd')
     autocmd GUIEnter * set visualbell t_vb=
 endif
 
-
-"highlight current line
-set cursorline
-
-"show current command in status bar
-set showcmd
-
-"turn off wraping by default
-set nowrap
-
-"
 set display+=lastline
 
+"============================
+"=        Keybinds          =
+"============================
 
-" ===============KEYBINDS===================
-
-"set leader to space
+"leader map
+nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-"double tap space to move back in the edit buffer
-"f to move forward
+"double tap space to move in edit list or jump list
+
 "nnoremap <Leader><Space> g;
 "nnoremap <Leader>f g,
-
-
 nnoremap <Leader><Space> <c-o>
 nnoremap <Leader>f <c-i>
 
-
 "yank to system clipboard
-"nnoremap <Leader>y "+y
+vnoremap <Leader>y "+y
 "nnoremap <Leader>p "*y
 
-
-"make splits open in the expected way
+"splits
 set splitbelow
 set splitright
 
@@ -177,19 +171,29 @@ nnoremap <Leader>p :bp<cr>
 "swap between buffers with space tab
 nnoremap <Leader><Tab> :b#<cr>
 
-
 "toggle search highlighting
 nnoremap <silent> <Leader>/ :set hls!<cr>
 
+"toggle line numbers
+nnoremap <silent> <Leader>l :set nu!<cr>
 
-" ===============COLORS===================
+"============================
+"=          Colors          =
+"============================
 
 "colorscheme
-colorscheme darcula
+"colorscheme darcula
+"let g:jellybeans_overrides = {
+"\    'background': { 'guibg': '080808' },
+"\}
+colorscheme jellybeans
+"let g:jellybeans_overrides = {
+"\    'background': { 'ctermfg': '146', 'ctermbg' : '235', 'cterm' : 'none'},
+"\}
 
-
-
-" ============FUNCTIONS, SCRIPTS==========
+"============================
+"=        Functions         =
+"============================
 
 "trim trailing white space
 fun! TrimWhitespace()

@@ -22,6 +22,7 @@ Plugin 'nanotech/jellybeans.vim'
 "Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
@@ -68,13 +69,12 @@ let g:SuperTabCrMapping=1
 
 "airline config
 let g:airline#extensions#tabline#enabled = 1
-"Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
+""Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_powerline_fonts = 1
 
 let g:airline_theme='jellybeans'
-"let g:airline_theme='bubblegum'
 "let g:airline_mode_map = {
   "\ '__' : '-',
   "\ 'n'  : 'N',
@@ -94,6 +94,9 @@ let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__res
 map <C-n> :NERDTreeToggle<CR>
 "close if the only buffer is the file
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"update time, used here for gitgutter
+set updatetime=250
 
 
 "============================
@@ -166,7 +169,7 @@ nnoremap <Leader>l <c-w>l
 
 "move between buffers
 nnoremap <Leader>n :bn<cr>
-nnoremap <Leader>p :bp<cr>
+"nnoremap <Leader>p :bp<cr>
 
 "swap between buffers with space tab
 nnoremap <Leader><Tab> :b#<cr>

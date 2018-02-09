@@ -74,7 +74,7 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 "let g:airline_powerline_fonts = 1
 
-let g:airline_theme='jellybeans'
+"let g:airline_theme='jellybeans'
 "let g:airline_mode_map = {
   "\ '__' : '-',
   "\ 'n'  : 'N',
@@ -91,13 +91,15 @@ let g:airline_theme='jellybeans'
 let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%#__restore__# :%3v'
 
 "nerdtree config
-map <C-n> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
 "close if the only buffer is the file
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "update time, used here for gitgutter
 set updatetime=250
 
+"ctrlp settings
+ let g:ctrlp_by_filename = 1
 
 "============================
 "=     General Config       =
@@ -169,7 +171,7 @@ nnoremap <Leader>l <c-w>l
 
 "move between buffers
 nnoremap <Leader>n :bn<cr>
-"nnoremap <Leader>p :bp<cr>
+nnoremap <Leader>p :bp<cr>
 
 "swap between buffers with space tab
 nnoremap <Leader><Tab> :b#<cr>

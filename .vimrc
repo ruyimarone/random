@@ -23,6 +23,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'leafgarland/typescript-vim'
 
 
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
@@ -140,6 +141,7 @@ endif
 
 set display+=lastline
 
+set mouse=a
 "============================
 "=        Keybinds          =
 "============================
@@ -181,6 +183,9 @@ nnoremap <silent> <Leader>/ :set hls!<cr>
 
 "toggle line numbers
 nnoremap <silent> <Leader>l :set nu!<cr>
+
+"easier commenting
+"rip
 
 "============================
 "=          Colors          =

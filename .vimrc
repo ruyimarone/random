@@ -102,6 +102,12 @@ set updatetime=250
 "ctrlp settings
  let g:ctrlp_by_filename = 1
 
+ " Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
 "============================
 "=     General Config       =
 "============================
@@ -185,7 +191,8 @@ nnoremap <silent> <Leader>/ :set hls!<cr>
 nnoremap <silent> <Leader>l :set nu!<cr>
 
 "easier commenting
-"rip
+nmap <c-_> <Plug>NERDCommenterInvert
+vmap <c-_> <Plug>NERDCommenterInvert
 
 "============================
 "=          Colors          =

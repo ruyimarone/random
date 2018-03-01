@@ -193,6 +193,8 @@ nnoremap <silent> <Leader>l :set nu!<cr>
 "easier commenting
 nmap <c-_> <Plug>NERDCommenterInvert
 vmap <c-_> <Plug>NERDCommenterInvert
+nmap <Leader>ci <c-_>
+vmap <Leader>ci <c-_>
 
 "============================
 "=          Colors          =

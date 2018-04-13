@@ -196,11 +196,11 @@ nnoremap <silent> <Leader>/ :set hls!<cr>
 "toggle line numbers
 nnoremap <silent> <Leader>l :set nu!<cr>
 
-"easier commenting
+"easier commenting, when in visual mode cursor will return
 nmap <c-_> <Plug>NERDCommenterInvert
-vmap <c-_> <Plug>NERDCommenterInvert
-nmap <Leader>ci <c-_>
-vmap <Leader>ci <c-_>
+vmap <c-_> <Plug>NERDCommenterInvert gv<Esc>
+nmap <Leader>ci <Plug>NERDCommenterInvert
+vmap <Leader>ci <Plug>NERDCommenterInvert gv<Esc>
 
 "============================
 "=          Colors          =

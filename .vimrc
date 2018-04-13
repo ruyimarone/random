@@ -126,6 +126,9 @@ set cursorline
 set showcmd
 set nowrap
 
+"when buffer swapping (and other things), don't move cursor in line
+set nostartofline
+
 "Searching
 set ignorecase
 set smartcase
@@ -166,6 +169,9 @@ nnoremap <Leader>f <c-i>
 "yank to system clipboard
 vnoremap <Leader>y "+y
 "nnoremap <Leader>p "*y
+
+"return curor to end of visual selection when yanking
+vmap y ygv<Esc>
 
 "splits
 set splitbelow

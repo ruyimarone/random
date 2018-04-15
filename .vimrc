@@ -100,7 +100,8 @@ let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__res
 set updatetime=250
 
 "ctrlp settings
- let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 1
+let g:ctrlp_working_path_mode = 0
 
  " Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {

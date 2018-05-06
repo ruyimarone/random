@@ -162,10 +162,10 @@ let mapleader=" "
 
 "double tap space to move in edit list or jump list
 
-"nnoremap <Leader><Space> g;
-"nnoremap <Leader>f g,
-nnoremap <Leader><Space> <c-o>
-nnoremap <Leader>f <c-i>
+nnoremap <Leader><Space> g;
+nnoremap <Leader>f g,
+"nnoremap <Leader><Space> <c-o>
+"nnoremap <Leader>f <c-i>
 
 "yank to system clipboard
 vnoremap <Leader>y "+y

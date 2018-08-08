@@ -24,6 +24,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'w0rp/ale'
 
 
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
@@ -64,6 +65,8 @@ filetype plugin indent on    " required
 "============================
 "=     Plugins Config       =
 "============================
+"syntastic config
+let g:ale_python_pylint_options="--disable=W,C,R"
 
 "supertab config
 let g:SuperTabCrMapping=1

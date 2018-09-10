@@ -66,7 +66,7 @@ filetype plugin indent on    " required
 "=     Plugins Config       =
 "============================
 "syntastic config
-let g:ale_python_pylint_options="--disable=W,C,R"
+let g:ale_python_pylint_options="--disable=W,C,R --extension-pkg-whitelist=torch,numpy"
 
 "supertab config
 let g:SuperTabCrMapping=1

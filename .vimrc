@@ -106,6 +106,9 @@ set updatetime=250
 let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode = 0
 
+"bind CTRL F to do a fuzzy search in file
+nnoremap <c-f> :CtrlPLine<cr>
+
  " Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
@@ -127,6 +130,7 @@ set laststatus=2
 set hidden
 set so=2
 set cursorline
+set cursorcolumn
 set showcmd
 set nowrap
 

@@ -25,6 +25,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'w0rp/ale'
+Plugin 'heavenshell/vim-pydocstring'
 
 
 "Plugin 'Valloric/YouCompleteMe' " Autocompletion.
@@ -115,6 +116,9 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
+" change python dosctring bind
+nmap <silent> """ <Plug>(pydocstring)
+
 "============================
 "=     General Config       =
 "============================
@@ -148,7 +152,7 @@ set tabstop=4
 set expandtab
 set softtabstop=4
 set shiftwidth=4
-filetype indent on
+"filetype indent on
 
 "mute error bell
 set noerrorbells visualbell t_vb=

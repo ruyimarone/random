@@ -8,3 +8,7 @@ Some config files I've built up for vim(/nvim) and tmux.
 and helpful stackoverflow answers. 
 
 The `darcula.vim` color theme is from [here](https://github.com/blueshirts/darcula), I think. 
+
+# Changelog
+
+- 04/04/2021 added tmux config file for tmux `v2.9+`. I used this script to merge certain options to the new syntax: https://gist.github.com/tbutts/6abf7fb5b948c066bf180922fb37adcf

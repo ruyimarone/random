@@ -23,12 +23,14 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'w0rp/ale'
-Plugin 'heavenshell/vim-pydocstring'
+Plugin 'rakr/vim-one'
+Plugin 'drewtempelmeyer/palenight.vim'
+Plugin 'google/vim-jsonnet'
 
-
-"Plugin 'Valloric/YouCompleteMe' " Autocompletion.
+if (has("nvim"))
+    Plugin 'w0rp/ale'
+    Plugin 'heavenshell/vim-pydocstring'
+endif
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -66,8 +68,14 @@ filetype plugin indent on    " required
 "============================
 "=     Plugins Config       =
 "============================
-"syntastic config
-let g:ale_python_pylint_options="--disable=W,C,R --extension-pkg-whitelist=torch,numpy"
+
+
+" === LINTING ===
+"
+let g:ale_python_pylint_options="--disable=W,C,R --extension-pkg-whitelist=torch,numpy --ignored-classes=torch,numpy"
+"let g:ale_linters = {
+"\  'python': ['pylint'],
+"\}
 
 "supertab config
 let g:SuperTabCrMapping=1
@@ -116,8 +124,12 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
-" change python dosctring bind
-nmap <silent> """ <Plug>(pydocstring)
+if (has("nvim"))
+    " change python dosctring bind to \"\"\"
+    nmap <silent> """ <Plug>(pydocstring)
+    let g:pydocstring_formatter = 'sphinx'
+    let g:pydocstring_doq_path = '~/anaconda3/bin/doq'
+endif
 
 "============================
 "=     General Config       =
@@ -185,6 +197,9 @@ vnoremap <Leader>y "+y
 "return curor to end of visual selection when yanking
 vmap y ygv<Esc>
 
+" toggle word wrapping
+nnoremap <silent> <Leader>w :set wrap!<cr>
+
 "splits
 set splitbelow
 set splitright
@@ -216,14 +231,33 @@ vmap <Leader>ci <Plug>NERDCommenterInvert gv<Esc>
 
 "============================
 "=          Colors          =
-"============================
+""============================
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  "colorscheme palenight
+  colorscheme one
+else
+  colorscheme jellybeans
+  highlight GitGutterAdd    guifg=#009900 ctermfg=2 ctermbg=236
+  highlight GitGutterChange guifg=#bbbb00 ctermfg=3 ctermbg=236
+  highlight GitGutterDelete guifg=#ff2222 ctermfg=9 ctermbg=236
+endif
 
-"colorscheme
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+set background=dark
+
 "colorscheme darcula
 "let g:jellybeans_overrides = {
 "\    'background': { 'guibg': '080808' },
 "\}
-colorscheme jellybeans
+"colorscheme jellybeans
 "let g:jellybeans_overrides = {
 "\    'background': { 'ctermfg': '146', 'ctermbg' : '235', 'cterm' : 'none'},
 "\}

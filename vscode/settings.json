@@ -1,0 +1,36 @@
+{
+    "window.zoomLevel": 1,
+    "editor.fontSize": 12,
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "/"],
+            "commands": [":set hls!"]
+        },
+        {
+            "before": ["<leader>", "l"],
+            "commands": [":set nu!"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    "editor.lineNumbers": "on",
+    "workbench.preferredDarkColorTheme": "One Dark Pro",
+    "workbench.colorCustomizations": {
+        "[One Dark Pro]": {
+            "editor.background": "#191c1f"
+        }
+    },
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.fontAliasing": "auto",
+    "remote.autoForwardPorts": false
+}

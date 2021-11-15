@@ -1,9 +1,11 @@
 {
-    "window.zoomLevel": 1,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "python.defaultInterpreterPath": "/usr/bin/python3",
     "editor.fontSize": 12,
     "vim.easymotion": true,
     "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.insertModeKeyBindings": [
@@ -16,21 +18,77 @@
         {
             "before": ["<leader>", "l"],
             "commands": [":set nu!"]
-        }
+        },
+        {
+            "before": ["<leader>", "c", "i"],
+            "commands": ["editor.action.commentLine"]
+        },
+        {
+            "before": ["<leader>", "c", "c"],
+            "commands": ["editor.action.addCommentLine"]
+        },
+        {
+            "before": ["<leader>", "c", "u"],
+            "commands": ["editor.action.removeCommentLine"]
+        },
+        {
+            "before": ["<leader>", "n"],
+            "commands": ["workbench.action.nextEditorInGroup"]
+        },
+        {
+            "before": ["<leader>", "p"],
+            "commands": ["workbench.action.previousEditorInGroup"]
+        },
+        {
+            "before": ["<leader>", "w"],
+            "commands": ["editor.action.toggleWordWrap"]
+        },
+        {
+            "before": ["<leader>", "i"],
+            "commands": ["editor.action.showHover"]
+        },
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<leader>", "c", "i"],
+            "commands": ["editor.action.commentLine"]
+        },
+        {
+            "before": ["<leader>", "c", "c"],
+            "commands": ["editor.action.addCommentLine"]
+        },
+        {
+            "before": ["<leader>", "c", "u"],
+            "commands": ["editor.action.removeCommentLine"]
+        },
     ],
     "vim.leader": "<space>",
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-f>": false
     },
-    "editor.lineNumbers": "on",
+    "editor.lineNumbers": "off",
     "workbench.preferredDarkColorTheme": "One Dark Pro",
     "workbench.colorCustomizations": {
         "[One Dark Pro]": {
             "editor.background": "#191c1f"
-        }
+        },
     },
     "workbench.colorTheme": "One Dark Pro",
     "workbench.fontAliasing": "auto",
-    "remote.autoForwardPorts": false
+    "remote.autoForwardPorts": false,
+    "terminal.integrated.macOptionClickForcesSelection": true,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.inheritEnv": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.wordWrap": "on",
+    "terminal.integrated.profiles.osx": {
+        "bash-brew": {
+            "args": [
+                "-l"
+            ],
+            "path": "/opt/homebrew/bin/bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.osx": "bash-brew",
 }

@@ -2,7 +2,13 @@
 [
     {
         "key": "ctrl+k",
-        "command": "workbench.action.navigateUp"
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when" : "terminalFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp",
+        "when" : "!terminalFocus"
     },
     {
         "key": "ctrl+j",
@@ -17,5 +23,16 @@
         "key": "ctrl+l",
         "command": "workbench.action.navigateRight",
         "when" : "!terminalFocus"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-python.execSelectionInTerminal",
+        "when": "editorTextFocus && !findInputFocussed && !jupyter.ownsSelection && !notebookEditorFocused && !replaceInputFocussed && editorLangId == 'python'"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-ocaml.evaluate-selection",
+        "when": "editorTextFocus && editorLangId == 'ocaml' || editorTextFocus && editorLangId == 'ocaml.interface' || editorTextFocus && editorLangId == 'ocaml.menhir' || editorTextFocus && editorLangId == 'ocaml.ocamllex' || editorTextFocus && editorLangId == 'reason'"
     }
+
 ]

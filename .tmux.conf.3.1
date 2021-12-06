@@ -105,6 +105,13 @@ set -g message-style fg=black,bg=yellow,bold,fg=colour232,bg=colour166
 
 # }
 
+# Change scroll speed in copy mode to 1 line per wheel click
+# Ref: https://github.com/tmux/tmux/issues/754#issuecomment-297452143
+# https://ryanfb.github.io/etc/2015/10/19/tmux_mouse_mode_on_el_capitan.html
+# https://superuser.com/questions/1084487/scrolling-on-mac-with-tmux-and-iterm
+bind -T copy-mode-vi WheelUpPane send -N1 -X scroll-up
+bind -T copy-mode-vi WheelDownPane send -N1 -X scroll-down
+
 
 #tmuxnavigator
 ## Smart pane switching with awareness of Vim splits.
@@ -126,3 +133,5 @@ bind-key -T copy-mode-vi 'C-j' select-pane -D
 bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
+
+

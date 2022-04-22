@@ -26,6 +26,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rakr/vim-one'
 Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'google/vim-jsonnet'
+Plugin 'tpope/vim-sleuth'
 
 if (has("nvim"))
     Plugin 'w0rp/ale'
@@ -124,7 +125,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
-if (has("nvim"))
+if (has("nvim")) && !(&diff)
     " change python dosctring bind to \"\"\"
     nmap <silent> """ <Plug>(pydocstring)
     let g:pydocstring_formatter = 'sphinx'

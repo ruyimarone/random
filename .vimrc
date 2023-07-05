@@ -26,6 +26,9 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'rakr/vim-one'
 Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'google/vim-jsonnet'
+Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'tpope/vim-sleuth'
 
 if (has("nvim"))
@@ -73,10 +76,12 @@ filetype plugin indent on    " required
 
 " === LINTING ===
 "
-let g:ale_python_pylint_options="--disable=W,C,R --extension-pkg-whitelist=torch,numpy --ignored-classes=torch,numpy"
-"let g:ale_linters = {
-"\  'python': ['pylint'],
-"\}
+"let g:ale_python_pylint_options="--disable=W,C,R --extension-pkg-whitelist=torch,numpy --ignored-classes=torch,numpy"
+let g:ale_cache_executable_check_failures=1
+let g:ale_python_pylint_options="--disable=W,C,R --extension-pkg-whitelist=torch,numpy"
+let g:ale_linters = {
+\  'python': ['flake8', 'pylint'],
+\}
 
 "supertab config
 let g:SuperTabCrMapping=1
@@ -121,16 +126,78 @@ nnoremap <c-f> :CtrlPLine<cr>
 
  " Ignore some folders and files for CtrlP indexing
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|__pycache__\|log\|tmp$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
-if (has("nvim")) && !(&diff)
+if (has("nvim"))
     " change python dosctring bind to \"\"\"
     nmap <silent> """ <Plug>(pydocstring)
     let g:pydocstring_formatter = 'sphinx'
     let g:pydocstring_doq_path = '~/anaconda3/bin/doq'
 endif
+
+
+
+function! s:goyo_enter()
+  "if executable('tmux') && strlen($TMUX)
+    "silent !tmux set status off
+    "silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  "endif
+  "set noshowmode
+  set noshowcmd
+  set spell
+  noremap <expr> k (v:count == 0 ? 'gk' : 'k')
+  noremap <expr> j (v:count == 0 ? 'gj' : 'j')
+  noremap <expr> $ (v:count == 0 ? 'g$' : '$')
+  noremap <expr> ^ (v:count == 0 ? 'g^' : '^')
+  noremap <expr> 0 (v:count == 0 ? 'g0' : '0')
+  set wrap
+  set linebreak
+  set scrolloff=999
+  set nocursorcolumn
+  Limelight
+
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+
+  " ...
+endfunction
+
+function! s:goyo_leave()
+  "if executable('tmux') && strlen($TMUX)
+    "silent !tmux set status on
+    "silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  "endif
+  "set showmode
+  set showcmd
+  unmap k
+  unmap j
+  unmap $
+  unmap ^
+  unmap 0
+  set nowrap
+  set scrolloff=2
+  set cursorcolumn
+  Limelight!
+
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+
+  " ...
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 
 "============================
 "=     General Config       =
@@ -230,6 +297,8 @@ vmap <c-_> <Plug>NERDCommenterInvert gv<Esc>
 nmap <Leader>ci <Plug>NERDCommenterInvert
 vmap <Leader>ci <Plug>NERDCommenterInvert gv<Esc>
 
+nnoremap <silent> <Leader>g :Goyo<cr>
+
 "============================
 "=          Colors          =
 ""============================
@@ -278,7 +347,11 @@ command! TrimWhitespace call TrimWhitespace()
 
 nnoremap <silent> <Leader>t :TrimWhitespace<cr>
 
+
+
 "Vim opens to the last edited position in a file
 if has("autocmd")
       au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+
+

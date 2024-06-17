@@ -1,4 +1,9 @@
 {
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
@@ -67,14 +72,18 @@
         "<C-a>": false,
         "<C-f>": false
     },
+    // "editor.quickSuggestions": {
+    //     "other": true,
+    //     "comments": false,
+    //     "strings": false
+    //   },
+    // "editor.quickSuggestionsDelay": 10,
     "editor.lineNumbers": "off",
-    "workbench.preferredDarkColorTheme": "One Dark Pro",
     "workbench.colorCustomizations": {
         "[One Dark Pro]": {
             "editor.background": "#191c1f"
         },
     },
-    "workbench.colorTheme": "One Dark Pro",
     "workbench.fontAliasing": "auto",
     "remote.autoForwardPorts": false,
     "terminal.integrated.macOptionClickForcesSelection": true,
@@ -91,4 +100,36 @@
         }
     },
     "terminal.integrated.defaultProfile.osx": "bash-brew",
+    "editor.inlineSuggest.enabled": true,
+    "oneDarkPro.vivid": false,
+    "remote.SSH.connectTimeout": 30,
+    "telemetry.telemetryLevel": "off",
+    "python.analysis.autoImportCompletions": false,
+    "terminal.integrated.scrollback": 10000,
+    "editor.tabCompletion": "on",
+    "editor.wordBasedSuggestions": "matchingDocuments",
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "notebook.cellFocusIndicator": "border",
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnknownVariableType": "none",
+        "reportUnknownMemberType" : "none"
+    },
+    "jupyter.askForKernelRestart": false,
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.semanticHighlighting.enabled": false,
+    "editor.suggest.localityBonus": true,
+    "editor.suggest.preview": true,
+    "notebook.output.wordWrap": true,
+    "editor.quickSuggestionsDelay": 1,
+    "editor.wordBasedSuggestionsMode": "currentDocument",
+    "editor.mouseWheelScrollSensitivity": 0.25,
+    "workbench.list.mouseWheelScrollSensitivity": 0.15,
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "window.commandCenter": false,
+    "[python]": {
+        "editor.wordBasedSuggestions": "matchingDocuments"
+    }
 }

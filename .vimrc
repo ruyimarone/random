@@ -307,6 +307,9 @@ if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   "colorscheme palenight
   colorscheme one
+  " make the background darker
+  call one#highlight('Normal', '', '191c1f', '')
+  call one#highlight('Cursor', '', '272d36', '')
 else
   colorscheme jellybeans
   highlight GitGutterAdd    guifg=#009900 ctermfg=2 ctermbg=236

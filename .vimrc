@@ -145,6 +145,8 @@ set guioptions=T
 set t_Co=256
 set laststatus=2
 set hidden
+
+
 set scrolloff=2
 set cursorline
 set cursorcolumn
@@ -277,7 +279,7 @@ else
     highlight GitGutterAdd    guifg=#009900 ctermfg=2 ctermbg=236
     highlight GitGutterChange guifg=#bbbb00 ctermfg=3 ctermbg=236
     highlight GitGutterDelete guifg=#ff2222 ctermfg=9 ctermbg=236
-    highlight SignColumn ctermbg=233 guibg=#121212
+    highlight SignColumn ctermbg=233 guibg=#151515
 endif
 
 "============================

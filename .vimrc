@@ -56,14 +56,14 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_section_z = '%#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%#__restore__# :%3v'
 
-" Git Gutter Configuration
+" Works better with git gutter
 set updatetime=250
 
 " CtrlP Configuration
 let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|log\|tmp$',
+  \ 'dir':  '\.git$\|\.yardoc\|node_modules\|__pycache__\|log\|tmp$',
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 nnoremap <c-f> :CtrlPLine<cr>

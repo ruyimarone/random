@@ -179,9 +179,10 @@ set display+=lastline
 
 set mouse=a
 
-"Vim opens to the last edited position in a file
+
+" Vim opens to the last edited position in a file
 if has("autocmd")
-      au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+      autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 endif
 
 "============================

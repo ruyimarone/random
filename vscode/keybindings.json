@@ -17,12 +17,22 @@
     {
         "key": "ctrl+h",
         "command": "workbench.action.navigateLeft",
-        "when" : "!terminalFocus"
+        "when" : "!terminalFocus && !isInDiffEditor"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "diffEditor.switchSide",
+        "when": "isInDiffEditor"
     },
     {
         "key": "ctrl+l",
         "command": "workbench.action.navigateRight",
-        "when" : "!terminalFocus"
+        "when" : "!terminalFocus && !isInDiffEditor"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "diffEditor.switchSide",
+        "when": "isInDiffEditor"
     },
     {
         "key": "shift+enter",
@@ -33,11 +43,6 @@
         "key": "shift+enter",
         "command": "-ocaml.evaluate-selection",
         "when": "editorTextFocus && editorLangId == 'ocaml' || editorTextFocus && editorLangId == 'ocaml.interface' || editorTextFocus && editorLangId == 'ocaml.menhir' || editorTextFocus && editorLangId == 'ocaml.ocamllex' || editorTextFocus && editorLangId == 'reason'"
-    },
-    {
-        "key": "shift+; q",
-        "when": "terminalFocus",
-        "command": "workbench.action.closePanel"
     },
     {
         "key": "ctrl+space z",
@@ -63,5 +68,15 @@
         "key": "shift+enter",
         "command": "-python.execInREPL",
         "when": "config.python.REPL.sendToNativeREPL && editorTextFocus && !jupyter.ownsSelection && !notebookEditorFocused && editorLangId == 'python' && activeEditor != 'workbench.editor.interactive'"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-python.execInREPL",
+        "when": "config.python.REPL.sendToNativeREPL && editorTextFocus && !accessibilityModeEnabled && !isCompositeNotebook && !jupyter.ownsSelection && !notebookEditorFocused && editorLangId == 'python'"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-python.execSelectionInTerminal",
+        "when": "editorTextFocus && !findInputFocussed && !isCompositeNotebook && !jupyter.ownsSelection && !notebookEditorFocused && !replaceInputFocussed && editorLangId == 'python'"
     }
 ]

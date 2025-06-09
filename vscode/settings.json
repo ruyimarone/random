@@ -7,7 +7,6 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter.notebook.ipynb"
     },
-    "python.defaultInterpreterPath": "/usr/bin/python3",
     "editor.fontSize": 12,
     "vim.easymotion": true,
     "vim.incsearch": true,
@@ -52,6 +51,14 @@
             "before": ["<leader>", "i"],
             "commands": ["editor.action.showHover"]
         },
+        {
+            "before": ["u"],
+            "commands": ["undo"]
+        },
+        {
+            "before": ["<C-r>"],
+            "commands": ["redo"]
+        },
     ],
     "vim.visualModeKeyBindings": [
         {
@@ -78,7 +85,7 @@
     //     "strings": false
     //   },
     // "editor.quickSuggestionsDelay": 10,
-    "editor.lineNumbers": "off",
+    "editor.lineNumbers": "on",
     "workbench.colorCustomizations": {
         "[One Dark Pro]": {
             "editor.background": "#191c1f"
@@ -110,7 +117,7 @@
     "editor.wordBasedSuggestions": "matchingDocuments",
     "jupyter.interactiveWindow.creationMode": "perFile",
     "notebook.cellFocusIndicator": "border",
-    "python.languageServer": "Pylance",
+    "python.languageServer": "None",
     "python.analysis.diagnosticSeverityOverrides": {
         "reportUnknownVariableType": "none",
         "reportUnknownMemberType" : "none"
@@ -123,13 +130,24 @@
     "notebook.output.wordWrap": true,
     "editor.quickSuggestionsDelay": 1,
     "editor.wordBasedSuggestionsMode": "currentDocument",
-    "editor.mouseWheelScrollSensitivity": 0.25,
-    "workbench.list.mouseWheelScrollSensitivity": 0.15,
-    "editor.smoothScrolling": true,
     "workbench.list.smoothScrolling": true,
-    "terminal.integrated.smoothScrolling": true,
     "window.commandCenter": false,
     "[python]": {
         "editor.wordBasedSuggestions": "matchingDocuments"
-    }
+    },
+    "interactiveWindow.executeWithShiftEnter": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "python.terminal.activateEnvironment": false,
+    "terminal.integrated.altClickMovesCursor": false,
+    "notebook.output.scrolling": true,
+    "editor.smoothScrolling": true,
+    "jupyter.runStartupCommands": [
+        "%load_ext autoreload",
+        "%autoreload 2"
+    ],
+    "window.dialogStyle": "custom",
+    "pylint.args": [
+        "--disable=all",
+        "--enable=F,E,unreachable,duplicate-key,unnecessary-semicolon,global-variable-not-assigned,unused-variable,binary-op-exception,bad-format-string,anomalous-backslash-in-string,bad-open-mode"
+    ],
 }
